@@ -2,11 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sign out | CodeFellowShip </title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Executed by the browser-->
+    <link href="/reset.css" rel="stylesheet"/>
+    <link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>You are signed out</h1>
-
-    <a href="/">Home</a> | <a href="/login">Login</a>
-
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+    <main>
+        <h1>You are signed out</h1>
+    </main>
 </body>
 </html>

@@ -4,20 +4,22 @@
     <title>Sign up |CodeFellowShip </title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Executed by the browser-->
+    <link href="/reset.css" rel="stylesheet"/>
     <link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
-    <h1>Sign up Page Welcome</h1>
-    <hr>
-    <form th:action="@{/user}" method="POST">
-        <p><label>UserName:</label><input type="text" name="username" /></p>
-        <p><label>Password:</label><input type="password" name="password" /></p>
-        <p><label>First Name:</label><input type="text" name="firstName" /></p>
-        <p><label>Last name:</label><input type="text" name="lastName" /></p>
-        <p><label>Date of Birth:</label><input type="date" name="dateOfBirth" /></p>
-        <p><label>Bio:</label><textarea placeholder="Talk about yourself" name="bio" rows="10" cols="10"></textarea><br/></p>
-        <input type="submit" />
-    </form>
+    <main>
+        <h1>Sign up Page Welcome</h1>
+        <form th:action="@{/user}" method="POST">
+            <p><label>UserName:</label><input type="text" name="username" /></p>
+            <p><label>Password:</label><input type="password" name="password" /></p>
+            <p><label>First Name:</label><input type="text" name="firstName" /></p>
+            <p><label>Last name:</label><input type="text" name="lastName" /></p>
+            <p><label>Date of Birth:</label><input type="date" name="dateOfBirth" /></p>
+            <p><label>Bio:</label><textarea placeholder="Talk about yourself" name="bio" rows="10" cols="10"></textarea><br/></p>
+            <input type="submit" />
+        </form>
+    </main>
 </body>
 </html>

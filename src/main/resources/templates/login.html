@@ -4,7 +4,10 @@
     <title>CodeFellowShip</title>
 </head>
 <body>
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+
     <h1>Login welcome</h1>
+    <hr>
 
     <h1>Log in</h1>
     <form action="/login" method="POST">
@@ -13,7 +16,7 @@
         <input type="submit" />
     </form>
 
-    <a href="/">Home</a> | <a href="/signup">signup</a>
+    <!--<a href="/">Home</a> | <a href="/signup">signup</a>-->
 
 
 </body>

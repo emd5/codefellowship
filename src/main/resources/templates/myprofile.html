@@ -7,16 +7,36 @@
     <link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+
     <h1>My Profile</h1>
+    <hr>
     <h3>Welcome, <span th:text="${principal.username}"></span></h3>
+    <img src="https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" width="50px" height="50px"/>
     <p>First Name: <span th:text="${principal.firstName}"/></p>
     <p>Last Name: <span th:text="${principal.lastName}"/></p>
     <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
     <p>Bio: <span th:text="${principal.bio}"/></p>
 
 
-    <!--<h3>Welcome, <span th:text="${currentUser}"></span></h3>-->
+    <div th:if="${myProfile}">
+        <h3>Create a Post</h3>
+        <form action="/post" method="POST">
+            <textarea placeholder="Penny for your thoughts" name="body" rows="10" cols="20"></textarea><br/>
+            <input type="submit"/>
+        </form>
+    </div>
 
-    <a href="/signout">Logout</a>
+    <!--<div th:if="${myProfile}">-->
+        <h3>List of post</h3>
+        <ul>
+            <li th:each="post : ${principal.posts}">
+                <p th:text="${post.body}"></p>
+                <p th:text="${post.createdAt}"></p>
+            </li>
+
+        </ul>
+    <!--</div>-->
+
 </body>
 </html>

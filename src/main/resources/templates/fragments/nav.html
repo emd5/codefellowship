@@ -1,0 +1,11 @@
+<nav th:fragment="navigationbar(user)">
+    <ul th:if="${user}">
+        <li><a href="/">Home</a></li>
+        <li> <a href="/signout">Logout</a></li>
+    </ul>
+    <ul th:if="${user} == false">
+        <li> <a href="/">Home</a></li>
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -24,6 +25,9 @@ public class ApplicationUser implements UserDetails {
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     Date dateOfBirth;
     String bio;
+
+    @OneToMany(mappedBy="appUser")
+    public List<Post> posts;
 
     //login
     public ApplicationUser(String username, String password){
@@ -51,9 +55,7 @@ public class ApplicationUser implements UserDetails {
     public long getId() {
         return id;
     }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
 
     public void setPassword(String password) {
         this.password = password;
@@ -68,6 +70,8 @@ public class ApplicationUser implements UserDetails {
     public String getUsername() {
         return this.username;
     }
+
+    public void setUsername(String username) { this.username = username; }
 
     public String getFirstName() {
         return firstName;
@@ -101,7 +105,9 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
+    public List<Post> getPosts() { return posts; }
 
+    public void setPosts(List<Post> posts) { this.posts = posts; }
 
     @Override
     public boolean isAccountNonExpired() {

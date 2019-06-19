@@ -17,8 +17,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.sql.Date;
 
-
-
 @Controller
 public class ApplicationUserController {
 

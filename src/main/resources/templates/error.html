@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error page</title>
+</head>
+<body>
+    <h1>Error</h1>
+<table>
+    <!--<tr>-->
+        <!--<td>Path</td>-->
+        <!--<div th:if="${path} == 400">-->
+            <!--This is a 404-->
+        <!--</div>-->
+        <!--<div th:if="${path} == 500">-->
+            <!--This is a 505-->
+        <!--</div>-->
+    <!--</tr>-->
+    <tr>
+        <td>Patj</td>
+        <td th:text="${path}"></td>
+    </tr>
+    <tr>
+        <td>Error</td>
+        <td th:text="${error}"></td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td th:text="${status}"></td>
+    </tr>
+    <tr>
+        <td>Message</td>
+        <td th:text="${message}"></td>
+    </tr>
+</table>
+
+    <a href="/"> Home </a>| <a href="/signup"> SignUp </a> | <a href="/login">Login</a>
+
+</body>
+</html>

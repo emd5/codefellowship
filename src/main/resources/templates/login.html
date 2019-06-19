@@ -2,19 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CodeFellowShip</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Executed by the browser-->
+    <link href="/reset.css" rel="stylesheet"/>
+    <link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Login welcome</h1>
-
-    <h1>Log in</h1>
-    <form action="/login" method="POST">
-        <p><label>Username:</label><input type="text" name="username" /></p>
-        <p><label>Password:</label><input type="password" name="password" /></p>
-        <input type="submit" />
-    </form>
-
-    <a href="/">Home</a> | <a href="/signup">signup</a>
-
-
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+    <main>
+        <h1>Log in</h1>
+        <form action="/login" method="POST">
+            <p><label>Username:</label><input type="text" name="username" /></p>
+            <p><label>Password:</label><input type="password" name="password" /></p>
+            <input type="submit" />
+        </form>
+    </main>
 </body>
 </html>

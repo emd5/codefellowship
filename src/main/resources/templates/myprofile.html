@@ -4,19 +4,41 @@
     <title>My Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Executed by the browser-->
+    <link href="/reset.css" rel="stylesheet"/>
     <link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>My Profile</h1>
-    <h3>Welcome, <span th:text="${principal.username}"></span></h3>
-    <p>First Name: <span th:text="${principal.firstName}"/></p>
-    <p>Last Name: <span th:text="${principal.lastName}"/></p>
-    <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
-    <p>Bio: <span th:text="${principal.bio}"/></p>
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
 
+    <main>
+        <div class="box profile">
+            <h3>Welcome, <span th:text="${principal.username}"></span></h3>
+            <img src="https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" width="50px" height="50px"/>
+            <p>First Name: <span th:text="${principal.firstName}"/></p>
+            <p>Last Name: <span th:text="${principal.lastName}"/></p>
+            <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
+            <p>Bio: <span th:text="${principal.bio}"/></p>
+        </div>
+        <div class="box">
+            <div th:if="${myProfile}">
+                <h3>Create a Post</h3>
+                <form action="/post" method="POST">
+                    <textarea placeholder="Penny for your thoughts" name="body" rows="10" cols="20"></textarea><br/>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </div>
 
-    <!--<h3>Welcome, <span th:text="${currentUser}"></span></h3>-->
+        <div class="box">
+            <h3>List of post</h3>
+            <ul>
+                <li th:each="post : ${principal.posts}">
+                    <p><span th:text="${post.body}"></span> | <span th:text="${post.createdAt}"></span></p>
+                </li>
 
-    <a href="/signout">Logout</a>
+            </ul>
+        </div>
+    </main>
+
 </body>
 </html>

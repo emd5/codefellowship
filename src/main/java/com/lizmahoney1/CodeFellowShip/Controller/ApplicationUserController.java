@@ -2,6 +2,8 @@ package com.lizmahoney1.CodeFellowShip.Controller;
 
 import com.lizmahoney1.CodeFellowShip.Model.ApplicationUser;
 import com.lizmahoney1.CodeFellowShip.AppUserRepository;
+import com.lizmahoney1.CodeFellowShip.Model.Post;
+import com.lizmahoney1.CodeFellowShip.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,8 +19,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.sql.Date;
 
-
-
 @Controller
 public class ApplicationUserController {
 
@@ -26,11 +26,15 @@ public class ApplicationUserController {
     AppUserRepository appUserRepository;
 
     @Autowired
+    PostRepository postRepository;
+
+    @Autowired
     PasswordEncoder bCryptPasswordEncoder;
 
     // Get root page
     @GetMapping("/")
-    public String getIndex(){
+    public String getIndex(Model m){
+        m.addAttribute("user", false);
         return "index";
     }
 
@@ -44,29 +48,41 @@ public class ApplicationUserController {
         ApplicationUser user = appUserRepository.findByUsername(newUser.getUsername());
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
         long id = user.getId();
         return "redirect:/users/"+id;
     }
 
     @GetMapping("/login")
-    public String getLoginPage(){ return "login"; }
+    public String getLoginPage(Model m){
+        m.addAttribute("user", false);
+        return "login"; }
 
     @GetMapping("/users/{id}")
     public String getMyProfile(Principal p, Model m){
         ApplicationUser currentUser = (ApplicationUser) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+
+        m.addAttribute("user", appUserRepository.findById(currentUser.getId()).get());
+        m.addAttribute("myProfile", false);
+        m.addAttribute("userId", currentUser.getId());
         m.addAttribute("principal",currentUser);
         return "myprofile";
     }
 
     @GetMapping("/myprofile")
     public String getMyProfilePage(Principal p, Model m){
-        ApplicationUser currentUser = (ApplicationUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
-        m.addAttribute("principal", currentUser);
+        //ApplicationUser currentUser = (ApplicationUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        ApplicationUser post = appUserRepository.findByUsername(p.getName());
+        m.addAttribute("principal", post);
+        m.addAttribute("myProfile", true);
+        m.addAttribute("user", true);
         return "myprofile";
     }
 
     @GetMapping("/signup")
-    public String getSignupPage(){
+    public String getSignupPage(Model m)
+    {
+        m.addAttribute("user", false);
         return "signup";
     }
 

@@ -11,14 +11,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
@@ -41,18 +39,20 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 //TO DISPLAY OTHER ROUTES
-                .antMatchers("/", "/user", "/login", "/signup")
+                .antMatchers("/", "/user", "/login", "/signup","/*.css")
                 .permitAll()
                 //anything else you must be logged in
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").defaultSuccessUrl("/myprofile", true).failureUrl("/login?error=true")
-                .and()
+                .loginPage("/login")
+                    .defaultSuccessUrl("/myprofile", true)
+                    .failureUrl("/login?error=true")
+                    .and()
                 .logout()
-                .logoutUrl("/potato")
-                .deleteCookies("JSESSIONID");
+                    .logoutUrl("/signout")
+                    .deleteCookies("JSESSIONID");
     }
 
     @Override

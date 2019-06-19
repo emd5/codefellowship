@@ -1,16 +1,10 @@
 package com.lizmahoney1.CodeFellowShip.Model;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
 
@@ -21,10 +15,11 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
 
+    @Column(unique=true)
     String username;
     String password;
     String firstName;
-    String lastname;
+    String lastName;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     Date dateOfBirth;
@@ -36,13 +31,14 @@ public class ApplicationUser implements UserDetails {
         this.password = password;
     }
 
+    public ApplicationUser(){}
     //sign up
     public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth,
                            String bio) {
         this.username = username;
         this.password = password;
         this.firstName =firstName;
-        this.lastname = lastName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
     }
@@ -50,6 +46,17 @@ public class ApplicationUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
+    }
+
+    public long getId() {
+        return id;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -62,21 +69,39 @@ public class ApplicationUser implements UserDetails {
         return this.username;
     }
 
-    public Date getDateOfBirth() { return dateOfBirth; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public String getBio() { return bio; }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public String getFirstName() { return firstName; }
+    public String getLastName() {
+        return lastName;
+    }
 
-    public String getLastname() { return lastname; }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-    public void setLastname(String lastname) { this.lastname = lastname; }
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-    public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+    public String getBio() {
+        return bio;
+    }
 
-    public void setBio(String bio) { this.bio = bio; }
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

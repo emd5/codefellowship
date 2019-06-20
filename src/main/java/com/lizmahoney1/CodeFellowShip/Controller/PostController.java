@@ -34,29 +34,4 @@ public class PostController {
         //redirect to myprofile
         return new RedirectView("/myprofile");
     }
-
-//    @PostMapping("/updateSong/{id}")
-//    public String updateSong(@PathVariable Long id, @RequestParam String title, @RequestParam int length,
-//                             @RequestParam int trackNumber){
-//        Song s = songRepository.findById(id).get();
-//        s.setTitle(title);
-//        s.setLength(length);
-//        s.setTrackNumber(trackNumber);
-//        songRepository.save(s);
-//        return "redirect:/albumDetail/{id}";
-//    }
-//
-//    @PostMapping(value="/post", method=RequestMethod.POST)
-//    public RedirectView create(@RequestParam String body, Principal p) {
-//
-//        ApplicationUser user = (ApplicationUser) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
-//
-//        //create a post & save it
-//        Post newPost = new Post(body, new Date());
-//        newPost.appUser = appUserRepo.findById(user.id).get();
-//        postRepo.save(newPost);
-//
-//        //redirect to myprofile
-//        return new RedirectView("/myprofile");
-//    }
 }

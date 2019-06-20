@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Julius+Sans+One|Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Faster+One|Julius+Sans+One|Poiret+One&display=swap');
+/*font-family: 'Julius Sans One', sans-serif;
+font-family: 'Cabin Sketch', cursive;
+font-family: 'Poiret One', cursive;
+font-family: 'Faster One', cursive;*/
+
 h1{
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 nav{
@@ -17,14 +22,13 @@ nav a{
 }
 
 .navbar-brand{
-    font-family: 'Cabin Sketch', cursive;
+    font-family: 'Faster One', cursive;;
 }
 
-main{
+.container{
     margin: 0 auto;
     width: 80%;
     padding: 2vh;
-    text-align: center;
 }
 
 .box{

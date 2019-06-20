@@ -9,17 +9,52 @@
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
-    <main>
+    <div class="container">
         <h1>Sign up Page Welcome</h1>
         <form th:action="@{/user}" method="POST">
-            <p><label>UserName:</label><input type="text" name="username" /></p>
-            <p><label>Password:</label><input type="password" name="password" /></p>
-            <p><label>First Name:</label><input type="text" name="firstName" /></p>
-            <p><label>Last name:</label><input type="text" name="lastName" /></p>
-            <p><label>Date of Birth:</label><input type="date" name="dateOfBirth" /></p>
-            <p><label>Bio:</label><textarea placeholder="Talk about yourself" name="bio" rows="10" cols="10"></textarea><br/></p>
-            <input type="submit" />
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                <input type="text" class="form-control form-control-sm" name="username" id="username" aria-describedby="usernameHelp"
+                       placeholder="Enter a username" required>
+                <!--<small id="usernameHelp" class="form-text text-muted">A username should be awesome</small>-->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="text" class="form-control form-control-sm" name="password" id="password" aria-describedby="passwordHelp"
+                       placeholder="Enter a password" required>
+                <!--<small id="passwordHelp" class="form-text text-muted">Passwords should be hard</small>-->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control form-control-sm" name="firstName" id="firstName"
+                       aria-describedby="firstNameHelp"
+                       placeholder="" required>
+                <small id="firstNameHelp" class="form-text text-muted">Passwords should be hard</small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control form-control-sm" name="lastName" id="lastName" aria-describedby="lastNameHelp"
+                       placeholder="" required>
+                <!--<small id="lastNameHelp" class="form-text text-muted">Passwords should be hard</small>-->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" class="form-control form-control-sm" name="dateOfBirth" id="dateOfBirth"
+                       aria-describedby="dateOfBirthHelp" placeholder="" required>
+                <!--<small id="dateOfBirthHelp" class="form-text text-muted">A Reasonable age</small>-->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="bio">Bio about yo self</label>
+                <textarea class="form-control form-control-sm" name="bio" aria-describedby="bioHelp"
+                          placeholder="Talk about yo self" rows="10" cols="10" required ></textarea>
+                <!--<input type="date" class="form-control" name="bio" id="bio" aria-describedby="bioHelp"-->
+                       <!--placeholder="Talk about yo self" required>-->
+                <!--<small id="bioHelp" class="form-text text-muted">Please type away</small>-->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </main>
+
+
+    </div>
 </body>
 </html>

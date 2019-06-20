@@ -26,14 +26,37 @@ In terminal run: `./gradlew test`
 
 ## Setup
 
-Create a new repo codefellowship to hold your work for the last 5 Spring labs. Use the Spring Initializr to set 
+Create a new repo Codefellowship to hold your work for the last 5 Spring labs. Use the Spring `Initializr` to set 
 up an app with dependencies on Web, Thymeleaf, JPA, Postgres, and Security (and optionally DevTools for auto refresh 
 of app on building). Remember to do your initial commit on the master branch before creating your feature branch. Also, 
 see the below note about configuring Spring Security.
 
 ## Features
 
+### 6/20/19
+
+-[] Ensure that users can’t perform SQL injection or HTML injection with their posts.
+-[] Allow users to follow other users. Following a user means that their posts show up in the logged-in user’s feed,
+ where they can see what all of their followed users have posted recently.
+    -[] Ensure there is some way (like a users index page) that a user can discover other users on the service.
+    -[] On a user profile page that does NOT belong to the currently logged-in user, display a “Follow” button. When a
+    user clicks that follow button, the logged-in user is now following the viewed-profile-page user.
+        note: this will require a self-join on ApplicationUsers.
+-[] A user can visit a url (like /feed) to view all of the posts from the users that they follow.
+    -[] Each post should have a link to the user profile of the user who wrote the post.
+***Old feature tasks that are still required***
+-[x] A splash page with basic information about the site
+-[x] The ability for users to register for new accounts and log in.
+-[x] The ability for logged-in users to create posts.
+-[x] The ability to see a user’s posts, along with their profile information and a default profile picture, on their
+ profile page.
+-[x] A pleasing design throughout the site.
+-[] Thymeleaf templates & fragments used appropriately to keep view code DRY.
+-[x] Smooth error handling with appropriate responses to bad requests.
+-[x] Integration testing on (at minimum) the splash page, login, and sign up routes.
+
 ### 6/19/19
+
 -[x] Allow users to log in to CodeFellowship and create posts.
 
 -[x] Using the above cheat sheet, add the ability for users to log in to your app.
@@ -66,8 +89,7 @@ that is used on multiple pages.)
 -[x] The site should have a non-whitelabel error handling page that lets the user know, at minimum, the error code and a 
 brief message about what went wrong.
 -[X] The site should contain integration testing. At a minimum, there should be tests to ensure basic functionality 
-for 
-the splash page and the sign up page.
+for the splash page and the sign up page.
 
 ### 6/18/19
 
@@ -95,6 +117,8 @@ WebSecurityConfig.java
 
 ## Resources 
 https://github.com/codefellows/seattle-java-401d4/blob/master/SpringAuthCheatSheet.md
+https://www.baeldung.com/hibernate-many-to-many
+
 
 
 

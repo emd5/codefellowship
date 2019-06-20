@@ -10,35 +10,43 @@
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
 
-    <main>
+
+    <div class="container">
+
         <div class="box profile">
-            <h3>Welcome, <span th:text="${principal.username}"></span></h3>
-            <img src="https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" width="50px" height="50px"/>
+            <h3>Welcome, <span th:text="${principal.username}"></span> [[${principal.username}]]</h3>
+            <img src="/unicorn.png" width="100px" height="100px">
             <p>First Name: <span th:text="${principal.firstName}"/></p>
             <p>Last Name: <span th:text="${principal.lastName}"/></p>
             <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
             <p>Bio: <span th:text="${principal.bio}"/></p>
         </div>
+
         <div class="box">
             <div th:if="${myProfile}">
                 <h3>Create a Post</h3>
                 <form action="/post" method="POST">
-                    <textarea placeholder="Penny for your thoughts" name="body" rows="10" cols="20"></textarea><br/>
-                    <input type="submit"/>
+                    <div class="form-group">
+                        <label for="body">Enter a post</label>
+                        <textarea class="form-control" placeholder="Penny for your thoughts" name="body" rows="5" cols="30"></textarea><br/>
+                        <small class="form-text text-muted">Post will be shared with your followers.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
 
         <div class="box">
-            <h3>List of post</h3>
-            <ul>
-                <li th:each="post : ${principal.posts}">
-                    <p><span th:text="${post.body}"></span> | <span th:text="${post.createdAt}"></span></p>
-                </li>
-
-            </ul>
+            <div th:if="${myProfile}">
+                <h3>List of post</h3>
+                <ul>
+                    <li th:each="post : ${principal.posts}">
+                        <p><span th:text="${post.body}"></span> | <span th:text="${post.createdAt}"></span></p>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </main>
+    </div>
 
 </body>
 </html>

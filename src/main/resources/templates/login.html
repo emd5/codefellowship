@@ -9,13 +9,13 @@
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
-    <main>
+    <div class="container">
         <h1>Log in</h1>
         <form action="/login" method="POST">
             <p><label>Username:</label><input type="text" name="username" /></p>
             <p><label>Password:</label><input type="password" name="password" /></p>
             <input type="submit" />
         </form>
-    </main>
+    </div>
 </body>
 </html>

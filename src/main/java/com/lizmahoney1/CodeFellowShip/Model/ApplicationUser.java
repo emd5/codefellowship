@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -29,13 +30,18 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy="appUser")
     public List<Post> posts;
 
+    @ManyToMany
+    Set<ApplicationUser> friends;
+
+    //default constructor
+    public ApplicationUser(){}
+
     //login
     public ApplicationUser(String username, String password){
         this.username = username;
         this.password = password;
     }
 
-    public ApplicationUser(){}
     //sign up
     public ApplicationUser(String username, String password, String firstName, String lastName, Date dateOfBirth,
                            String bio) {
@@ -47,15 +53,9 @@ public class ApplicationUser implements UserDetails {
         this.bio = bio;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
     public long getId() {
         return id;
     }
-
 
     public void setPassword(String password) {
         this.password = password;
@@ -108,6 +108,18 @@ public class ApplicationUser implements UserDetails {
     public List<Post> getPosts() { return posts; }
 
     public void setPosts(List<Post> posts) { this.posts = posts; }
+
+    public Set<ApplicationUser> getFriends() { return friends; }
+
+    public void setFriends(Set<ApplicationUser> friends) { this.friends = friends; }
+
+
+    // Auth stuff
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

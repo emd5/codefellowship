@@ -150,6 +150,9 @@ public class ApplicationUserController {
         ApplicationUser currentUser = appUserRepository.findByUsername(p.getName());
         Set<ApplicationUser> followFriends = currentUser.getFriends();
         m.addAttribute("followingFriends", followFriends);
+        //for the nav bar
+        m.addAttribute("myProfile", true);
+        m.addAttribute("user", true);
 
         return "feed";
     }
@@ -186,10 +189,14 @@ public class ApplicationUserController {
         if (currentUser.getFriends().contains(user)) {
             m.addAttribute("user", user);
             m.addAttribute("isFriend", true);
+            m.addAttribute("myProfile", true);
+
 
         } else {
             m.addAttribute("user", user);
             m.addAttribute("isFriend", false);
+            m.addAttribute("myProfile", true);
+
         }
 
         return "friendProfile";
@@ -206,12 +213,16 @@ public class ApplicationUserController {
             appUserRepository.save(currentUser);
             m.addAttribute("user", user);
             m.addAttribute("isFriend", false);
+            m.addAttribute("myProfile", true);
+
         }
         else {
             currentUser.getFriends().add(user);
             appUserRepository.save(currentUser);
             m.addAttribute("user", user);
             m.addAttribute("isFriend", true);
+            m.addAttribute("myProfile", true);
+
         }
         return "friendProfile";
     }

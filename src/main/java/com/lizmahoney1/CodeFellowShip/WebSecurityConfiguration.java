@@ -40,7 +40,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 //TO DISPLAY OTHER ROUTES
-                .antMatchers(HttpMethod.GET,"/", "/user", "/login", "/signup","/*.css").permitAll()
+                .antMatchers(HttpMethod.GET,"/", "/user", "/login", "/signup","/posts","/*.css").permitAll()
                 .antMatchers("/", "/user", "/login", "/signup","/*.css")
                 .permitAll()
                 //anything else you must be logged in

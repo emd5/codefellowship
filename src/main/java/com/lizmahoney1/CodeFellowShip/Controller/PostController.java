@@ -31,7 +31,6 @@ public class PostController {
         Post newPost = new Post(body, new Date());
         newPost.appUser = appUserRepository.findById(user.getId()).get();
         postRepository.save(newPost);
-
         //redirect to myprofile
         return new RedirectView("/myprofile");
     }
@@ -39,15 +38,15 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String getOnePost(@PathVariable Long id, Principal p, Model m) {
         Post post = postRepository.findById(id).get();
-        if(post.getAppUser().getUsername().equals(p.getName())){
+//        if(post.getAppUser().equals(p.getName())){
             m.addAttribute("post", post);
+            m.addAttribute("myProfile", true);
             return "post";
-        }
-        else{
-            throw new PostException("Post exception");
-        }
+//        }
+//        else{
+//            throw new PostException("Post exception");
+//        }
     }
-
     // came from https://stackoverflow.com/questions/2066946/trigger-404-in-spring-mvc-controller
     @ResponseStatus(value = HttpStatus.FORBIDDEN)
     class PostException extends RuntimeException {

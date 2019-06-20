@@ -4,12 +4,13 @@ import com.lizmahoney1.CodeFellowShip.AppUserRepository;
 import com.lizmahoney1.CodeFellowShip.Model.ApplicationUser;
 import com.lizmahoney1.CodeFellowShip.Model.Post;
 import com.lizmahoney1.CodeFellowShip.PostRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -33,5 +34,25 @@ public class PostController {
 
         //redirect to myprofile
         return new RedirectView("/myprofile");
+    }
+
+    @GetMapping("/posts/{id}")
+    public String getOnePost(@PathVariable Long id, Principal p, Model m) {
+        Post post = postRepository.findById(id).get();
+        if(post.getAppUser().getUsername().equals(p.getName())){
+            m.addAttribute("post", post);
+            return "post";
+        }
+        else{
+            throw new PostException("Post exception");
+        }
+    }
+
+    // came from https://stackoverflow.com/questions/2066946/trigger-404-in-spring-mvc-controller
+    @ResponseStatus(value = HttpStatus.FORBIDDEN)
+    class PostException extends RuntimeException {
+        public PostException(String s) {
+            super(s);
+        }
     }
 }

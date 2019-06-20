@@ -206,8 +206,10 @@ public class ApplicationUserController {
             appUserRepository.save(currentUser);
             m.addAttribute("user", user);
             m.addAttribute("isFriend", false);
-        } else {
+        }
+        else {
             currentUser.getFriends().add(user);
+            appUserRepository.save(currentUser);
             m.addAttribute("user", user);
             m.addAttribute("isFriend", true);
         }

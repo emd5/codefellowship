@@ -25,9 +25,8 @@
                         <p th:text="${p.bio}"></p>
 
                         <ul>
-                            <li th:each="l: ${p.posts}">
-                                <p th:text="${l.body}"></p>
-                                Created At: <span th:text="${l.createAt}"></span>
+                            <li th:each="post: ${p.posts}">
+                                <p th:text="${post.body}"> |  Created At: <span th:text="${post.createdAt}"></span> </p>
                             </li>
                         </ul>
 

@@ -4,9 +4,10 @@
             <a class="navbar-brand" href="/">CodeFellowShip <img src="/unicorn.png" width="25px" height="25px"></a>
         </div>
         <ul class="nav" th:if="${user}">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/feed">Feed</a></li>
-            <li><a href="/users" >Users</a></li>
+            <!--<li class="active"><a href="/">Home</a></li>-->
+            <li><a href="/myprofile">My Dashboard</a></li>
+            <li><a href="/feed">News Feed</a></li>
+            <li><a href="/users" >All Users</a></li>
             <li><a href="/signout">Logout</a></li>
         </ul>
         <ul class="nav" th:if="${user} == false">

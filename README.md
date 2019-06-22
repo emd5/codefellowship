@@ -1,5 +1,7 @@
 # CodeFellowShip
 
+![Splash page](./src/main/resources/static/index.jpg)
+
 ## Author
 Liz Mahoney
 
@@ -118,7 +120,7 @@ WebSecurityConfig.java
 ## Resources 
 https://github.com/codefellows/seattle-java-401d4/blob/master/SpringAuthCheatSheet.md
 https://www.baeldung.com/hibernate-many-to-many
-
+https://startbootstrap.com/snippets/
 Collaborator Help: Xia Liu
 
 

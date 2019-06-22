@@ -38,16 +38,11 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String getOnePost(@PathVariable Long id, Principal p, Model m) {
         Post post = postRepository.findById(id).get();
-//        if(post.getAppUser().equals(p.getName())){
-            m.addAttribute("post", post);
+        m.addAttribute("post", post);
         //for the nav bar
-            m.addAttribute("myProfile", true);
-            m.addAttribute("user", true);
-            return "post";
-//        }
-//        else{
-//            throw new PostException("Post exception");
-//        }
+        m.addAttribute("myProfile", true);
+        m.addAttribute("user", true);
+        return "post";
     }
     // came from https://stackoverflow.com/questions/2066946/trigger-404-in-spring-mvc-controller
     @ResponseStatus(value = HttpStatus.FORBIDDEN)

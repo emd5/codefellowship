@@ -4,18 +4,73 @@
     <title>CodeFellowShip</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/reset.css" rel="stylesheet"/>
+    <link href="/styles.css" rel="stylesheet"/>
     <!--Executed by the browser-->
     <link href="/reset.css" rel="stylesheet"/>
     <link href="/styles.css" rel="stylesheet"/>
+    <!--<div th:replace="fragments/head :: headContent"></div>-->
+
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
 
-    <div class="container">
-        <p>Welcome to CodeFellowship that allows people learning to code to connect
-            with each other and support each other on their coding journeys. You can log into your account by clicking the below link</p>
-    </div>
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <!--<ol class="carousel-indicators">-->
+                <!--<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
+                <!--<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+                <!--<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+            <!--</ol>-->
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="display-4">Welcome to CodeFellowship</h3>
+                        <p class="lead">For coders who need love.</p>
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <!--<div class="carousel-item" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">-->
+                    <!--<div class="carousel-caption d-none d-md-block">-->
+                        <!--<h3 class="display-4">Second Slide</h3>-->
+                        <!--<p class="lead">This is a description for the second slide.</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; Slide Three - Set the background image for this slide in the line below &ndash;&gt;-->
+                <!--<div class="carousel-item" style="background-image: url('https://source.unsplash.com/O7fzqFEfLlo/1920x1080')">-->
+                    <!--<div class="carousel-caption d-none d-md-block">-->
+                        <!--<h3 class="display-4">Third Slide</h3>-->
+                        <!--<p class="lead">This is a description for the third slide.</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+                <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+                <!--<span class="sr-only">Previous</span>-->
+            <!--</a>-->
+            <!--<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+                <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                <!--<span class="sr-only">Next</span>-->
+            <!--</a>-->
+        </div>
+    </header>
 
-
+    <!-- Page Content -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="font-weight-light">What is CodeFellowShip?</h1>
+            <p class="lead">Welcome to CodeFellowship that allows people learning to code to connect
+                with each other and support each other on their coding journeys!</p>
+            <br>
+            <br>
+            <h1 class="font-weight-light">Why CodeFellowShip?</h1>
+            <p class="lead">Feel frustrated? Need guidance? CodeFellowship is a place for that where we provide
+                technical support and guidance. We foster an open environment and continue to provide assistance for
+            novice, amateur, and expert level software engineers and developers.</p>
+        </div>
+    </section>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+
 </html>

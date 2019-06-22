@@ -50,7 +50,8 @@ public class Post {
         this.createdAt = createdAt;
     }
 
+    public ApplicationUser getAppUser() { return appUser; }
 
-
+    public void setAppUser(ApplicationUser appUser) { this.appUser = appUser; }
 
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
-    <main>
+    <div class="container">
         <h1>Error</h1>
         <table>
             <tr>
@@ -29,7 +29,7 @@
                 <td th:text="${message}"></td>
             </tr>
         </table>
-    </main>
+    </div>
 
 </body>
 </body>

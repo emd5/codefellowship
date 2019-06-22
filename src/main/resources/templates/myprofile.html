@@ -9,36 +9,120 @@
 </head>
 <body>
     <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+    <div class="container">
 
-    <main>
-        <div class="box profile">
-            <h3>Welcome, <span th:text="${principal.username}"></span></h3>
-            <img src="https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" width="50px" height="50px"/>
-            <p>First Name: <span th:text="${principal.firstName}"/></p>
-            <p>Last Name: <span th:text="${principal.lastName}"/></p>
-            <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
-            <p>Bio: <span th:text="${principal.bio}"/></p>
-        </div>
-        <div class="box">
-            <div th:if="${myProfile}">
-                <h3>Create a Post</h3>
-                <form action="/post" method="POST">
-                    <textarea placeholder="Penny for your thoughts" name="body" rows="10" cols="20"></textarea><br/>
-                    <input type="submit"/>
-                </form>
+        <!-- Portfolio Item Heading -->
+        <h1 class="my-4">My Dashboard</h1>
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+            <div class="col-md-4 sidebar">
+                <h3 class="my-3">Welcome, <span th:text="${principal.username}"></span></h3>
+                <!--<div class="box profile">-->
+                    <!--<h3>Welcome, <span th:text="${principal.username}"></span> [[${principal.username}]]</h3>-->
+                    <img src="/unicorn.png" width="50px" height="50px">
+                    <p>First Name: <span th:text="${principal.firstName}"/></p>
+                    <p>Last Name: <span th:text="${principal.lastName}"/></p>
+                    <p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>
+                    <p>Bio: <span th:text="${principal.bio}"/></p>
+                <!--</div>-->
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>-->
+                <!--<h3 class="my-3">Project Details</h3>-->
+                <!--<ul>-->
+                    <!--<li>Lorem Ipsum</li>-->
+                    <!--<li>Dolor Sit Amet</li>-->
+                    <!--<li>Consectetur</li>-->
+                    <!--<li>Adipiscing Elit</li>-->
+                <!--</ul>-->
+            </div>
+            <div class="col-md-8">
+                <!--<img class="img-fluid" src="http://placehold.it/750x500" alt="">-->
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 mb-4">
+                        <div class="container">
+                            <div th:if="${myProfile}">
+                                <h3>Create a Post</h3>
+                                <form action="/post" method="POST">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="body" name="body" rows="5"
+                                                  cols="20"></textarea><br/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 col-sm-8 mb-4">
+                        <div class="container">
+                            <div th:if="${myProfile}">
+                                <h3>My Posts</h3>
+                                <ul>
+                                    <li th:each="post : ${principal.posts}">
+                                        <ul class="postList">
+                                            <li><span th:text="${post.body}"></span></li>
+                                                <ul>
+                                                    <li><span th:text="${post.createdAt}"></span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <!--<p><span th:text="${post.body}"></span> | <span th:text="${post.createdAt}"></span></p>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
+        <!-- /.row -->
 
-        <div class="box">
-            <h3>List of post</h3>
-            <ul>
-                <li th:each="post : ${principal.posts}">
-                    <p><span th:text="${post.body}"></span> | <span th:text="${post.createdAt}"></span></p>
-                </li>
+        <!-- Related Projects Row -->
+        <!--<h3 class="my-4">Related Projects</h3>-->
 
-            </ul>
-        </div>
-    </main>
+        <!--<div class="row">-->
+
+            <!--<div class="col-md-3 col-sm-6 mb-4">-->
+                <!--<a href="#">-->
+                    <!--<img class="img-fluid" src="http://placehold.it/500x300" alt="">-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-3 col-sm-6 mb-4">-->
+                <!--<a href="#">-->
+                    <!--<img class="img-fluid" src="http://placehold.it/500x300" alt="">-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-3 col-sm-6 mb-4">-->
+                <!--<a href="#">-->
+                    <!--<img class="img-fluid" src="http://placehold.it/500x300" alt="">-->
+                <!--</a>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-3 col-sm-6 mb-4">-->
+                <!--<a href="#">-->
+                    <!--<img class="img-fluid" src="http://placehold.it/500x300" alt="">-->
+                <!--</a>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!--<div class="container">-->
+
+        <!--<div class="box profile">-->
+            <!--<h3>Welcome, <span th:text="${principal.username}"></span> [[${principal.username}]]</h3>-->
+            <!--<img src="/unicorn.png" width="100px" height="100px">-->
+            <!--<p>First Name: <span th:text="${principal.firstName}"/></p>-->
+            <!--<p>Last Name: <span th:text="${principal.lastName}"/></p>-->
+            <!--<p>Date of birth: <span th:text="${principal.dateOfBirth}"/></p>-->
+            <!--<p>Bio: <span th:text="${principal.bio}"/></p>-->
+        <!--</div>-->
+        <!---->
+    <!--</div>-->
 
 </body>
 </html>

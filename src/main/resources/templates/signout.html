@@ -1,16 +1,53 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<title>Sign out | CodeFellowShip </title>-->
+    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <!--&lt;!&ndash;Executed by the browser&ndash;&gt;-->
+    <!--<link href="/reset.css" rel="stylesheet"/>-->
+    <!--<link href="/styles.css" rel="stylesheet"/>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div th:replace="fragments/nav :: navigationbar(${user})"></div>-->
+    <!--<div class="container">-->
+        <!--<h1>You are signed out</h1>-->
+    <!--</div>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sign out | CodeFellowShip </title>
+    <title>Sign Out | CodeFellowShip </title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
+
     <!--Executed by the browser-->
     <link href="/reset.css" rel="stylesheet"/>
     <link href="/styles.css" rel="stylesheet"/>
+
 </head>
 <body>
-    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
-    <main>
-        <h1>You are signed out</h1>
-    </main>
+<div th:replace="fragments/nav :: navigationbar(${user})"></div>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4">Sign Up!</h3>
+                                <h1>You are signed out</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>-->
 </html>
+

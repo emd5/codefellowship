@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Friends Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Executed by the browser-->
+    <link href="/reset.css" rel="stylesheet"/>
+    <link href="/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="fragments/nav :: navigationbar(${user})"></div>
+<div class="container">
+    <h1>Profile</h1>
+    <form th:action="'/friends/'+ ${user.id}" method="POST">
+        <th:block th:switch="${isFriend}">
+            <th:block th:case="false">
+                <button type="submit" class="btn btn-primary">Follow</button>
+            </th:block>
+            <th:block th:case="true">
+                <button type="submit" class="btn btn-primary">Unfollow</button>
+            </th:block>
+        </th:block>
+    </form>
+
+    <div class="container">
+        <img src="/unicorn.png" width="50px" height="50px">
+        <p>First Name: <span th:text="${user.firstName}"/></p>
+        <p>Last Name: <span th:text="${user.lastName}"/></p>
+        <p>Date of birth: <span th:text="${user.dateOfBirth}"/></p>
+        <p>Bio: <span th:text="${user.bio}"/></p>
+    </div>
+
+    <div class="box profile">
+        <h3>Their Posts</h3>
+        <ul id="posts">
+            <li th:each="post : ${user.posts}">
+                <a th:href="'/posts/'+${post.id}">
+                    <span th:text="${post.body}"></span>
+                    create at <span th:text="${post.createdAt}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+</html>

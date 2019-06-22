@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>List of users</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--Executed by the browser-->
+        <link href="/reset.css" rel="stylesheet"/>
+        <link href="/styles.css" rel="stylesheet"/>
+    </head>
+    <body>
+    <div th:replace="fragments/nav :: navigationbar(${user})"></div>
+    <div class="container">
+        <div th:if="${potentialFriends.size()==0}">
+            <p>No users Available</p>
+        </div>
+        <div th:if="${potentialFriends.size()>0}" >
+            <h3>Check out other friends</h3>
+            <ul>
+                <li th:each="p:${potentialFriends}">
+                    <p th:text="${p.firstName}+ ' '+ ${p.lastName}"></p>
+                    <p th:text="${p.dateOfBirth}"></p>
+                    <p th:text="${p.bio}"></p>
+                    <form th:action="'/friends/'+${p.id}" method="get">
+                        <button type="submit">View</button>
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    </body>
+
+</html>

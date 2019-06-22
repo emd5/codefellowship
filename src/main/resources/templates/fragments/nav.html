@@ -1,10 +1,13 @@
 <nav class="navbar navbar-inverse" th:fragment="navigationbar (user)">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">CodeFellowShip <img src="/unicorn.png" width="25px" height="25px"></a>
+            <a class="navbar-brand" href="/">CodeFellowShip </a>
         </div>
         <ul class="nav" th:if="${user}">
-            <li class="active"><a href="/">Home</a></li>
+            <!--<li class="active"><a href="/">Home</a></li>-->
+            <li><a href="/myprofile">My Dashboard</a></li>
+            <li><a href="/feed">News Feed</a></li>
+            <li><a href="/users" >All Users</a></li>
             <li><a href="/signout">Logout</a></li>
         </ul>
         <ul class="nav" th:if="${user} == false">

@@ -12,6 +12,9 @@ Liz Mahoney
 For your remaining labs before the midterm project, you’ll create an app called CodeFellowship that allows people 
 learning to code to connect with each other and support each other on their coding journeys.
 
+## Links 
+Deployed Link - http://codefellowship-emd5.us-west-2.elasticbeanstalk.com/
+
 ## Getting Started
 
 ***To Run Application***
@@ -73,7 +76,7 @@ should be limited to logged-in users.
 - [X] A user’s posts should be visible on their profile page.
 - [X] When a user is logged in, the app should display the user’s username on every page (probably in the heading).
 
-***Feature tasks from yesterday that are still required***
+    ***Feature tasks from yesterday that are still required***
 - [x] The site should have a splash page at the root route (/) that contains basic information about the site, as 
 well as 
 a link to the “sign up” page.
